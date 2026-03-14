@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE 2008 TIMELINE SHIFT !!! CLASSIFIED !!!</title>
+    <style>
+        body {
+            background: black;
+            color: lime;
+            font-family: 'Comic Sans MS', cursive;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #starfield {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 0;
+        }
+
+        .container {
+            position: relative;
+            z-index: 10;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            padding: 8px 14px;
+        }
+
+        .slide {
+            display: none;
+            flex: 1;
+            background: transparent;
+            padding: 10px 18px;
+            overflow-y: auto;
+            max-height: calc(100vh - 110px);
+        }
+
+        .slide.active { display: block; }
+
+        .slide h2 {
+            font-size: 38px;
+            color: cyan;
+            text-align: center;
+            margin: 0 0 10px 0;
+            text-shadow: 2px 2px red;
+        }
+
+        .slide h3 {
+            font-size: 26px;
+            color: yellow;
+            margin: 8px 0 5px 0;
+        }
+
+        .slide p {
+            font-size: 20px;
+            line-height: 1.5;
+            margin-bottom: 8px;
+            color: lime;
+        }
+
+        .slide ul {
+            margin: 0 0 8px 22px;
+        }
+
+        .slide li {
+            margin-bottom: 6px;
+            font-size: 19px;
+            color: lime;
+        }
+
+        .warning {
+            color: red;
+            font-weight: bold;
+            font-size: 26px;
+            animation: blink 1s infinite;
+        }
+
+        .highlight {
+            background: yellow;
+            color: black;
+            padding: 1px 4px;
+            font-weight: bold;
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 10px;
+        }
+
+        .nav-btn {
+            background: red;
+            color: yellow;
+            border: 3px outset yellow;
+            padding: 6px 14px;
+            cursor: pointer;
+            font-size: 16px;
+            font-family: 'Comic Sans MS', cursive;
+            font-weight: bold;
+        }
+
+        .nav-btn:hover { background: yellow; color: red; }
+        .nav-btn:disabled { opacity: 0.3; }
+
+        .slide-counter {
+            font-size: 20px;
+            color: cyan;
+            font-weight: bold;
+        }
+
+        @keyframes blink {
+            0%, 49% { opacity: 1; }
+            50%, 100% { opacity: 0; }
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 12px;
+            color: lime;
+            padding: 2px 0 4px;
+        }
+
+        .center { text-align: center; }
+
+        marquee {
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .date-box {
+            background: red;
+            color: yellow;
+            padding: 8px 12px;
+            border: 3px solid yellow;
+            margin: 6px 0;
+            text-align: center;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        /* ── layout helpers ── */
+        .row {
+            display: flex;
+            gap: 18px;
+            align-items: flex-start;
+        }
+        .col {
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .photo-row {
+            display: flex;
+            gap: 10px;
+            align-items: flex-end;
+            flex-wrap: nowrap;
+            margin: 6px 0;
+        }
+        .photo-row img { flex-shrink: 0; }
+
+        /* ── selective borders ── */
+        .b-outset  { border: 3px outset yellow; }
+        .b-ridge   { border: 4px ridge red; }
+        .b-double  { border: 4px double cyan; }
+        .b-dashed  { border: 2px dashed lime; }
+
+        /* ── tilts ── */
+        .tl1 { transform: rotate(-2deg); }
+        .tl2 { transform: rotate(-4deg); }
+        .tr1 { transform: rotate(2deg);  }
+        .tr2 { transform: rotate(3.5deg);}
+        .tr3 { transform: rotate(5deg);  }
+
+        /* ── youtube ── */
+        .yt-wrap {
+            border: 4px ridge cyan;
+            display: inline-block;
+            transform: rotate(-1deg);
+            flex-shrink: 0;
+        }
+        .yt-wrap iframe { display: block; }
+
+        /* ── mandela grid ── */
+        .m-grid { border-collapse: collapse; margin: 6px 0; }
+        .m-grid td { padding: 4px 8px; vertical-align: bottom; }
+        .m-grid img { display: block; }
+        .m-cap { font-size: 15px; color: yellow; text-align: center; margin-top: 3px; }
+    </style>
+</head>
+<body>
+<canvas id="starfield"></canvas>
+
+<div class="container">
+
+    <!-- SLIDE 1: REMEMBER 2008 -->
+    <div class="slide active" data-slide="1">
+        <h2>REMEMBER 2008?</h2>
+        <p class="center" style="color:yellow; margin:2px 0 6px; font-size:21px;">Life was simple. Life was NORMAL. This was Timeline A. The ORIGINAL timeline.</p>
+
+        <div class="photo-row" style="justify-content:center;">
+            <img src="images/1_2008/tha_carter.jpg"   class="tl1"  style="height:185px; width:auto;">
+            <img src="images/1_2008/beerpong.png"      class="tr2 b-dashed"  style="height:195px; width:auto;">
+            <img src="images/1_2008/phones.jpg"        class="tl2"  style="height:178px; width:auto;">
+            <img src="images/1_2008/psu.png"           class="tr1"  style="height:188px; width:auto;">
+        </div>
+        <div class="photo-row" style="justify-content:center;">
+            <img src="images/1_2008/boys.png"          class="tr1"  style="height:182px; width:auto;">
+            <img src="images/1_2008/hb.png"            class="tl1 b-outset" style="height:172px; width:auto;">
+            <img src="images/1_2008/video%20games.jpg" class="tr3"  style="height:190px; width:auto;">
+            <img src="images/1_2008/pekulibear.png"    class="tl2"  style="height:180px; width:auto;">
+        </div>
+
+        <p class="center" style="font-size:21px; margin:8px 0 0; color:cyan;">But then... something happened.</p>
+        <p class="center" style="font-size:14px; margin:4px 0 0; opacity:0.7;">(Use arrow keys to continue →)</p>
+    </div>
+
+    <!-- SLIDE 2: WARNING -->
+    <div class="slide" data-slide="2">
+        <h2>⚠ ⚠ ⚠ WARNING ⚠ ⚠ ⚠</h2>
+        <div class="row" style="align-items:center;">
+            <div class="col">
+                <p class="center" style="font-size:30px;"><span class="warning">WHAT IF I TOLD YOU...</span></p>
+                <p class="center" style="font-size:24px; line-height:1.8; margin-top:16px;">
+                    On September 10, 2008,<br>
+                    the world as we knew it ENDED.<br><br>
+                    We just didn't realize it yet.
+                </p>
+            </div>
+            <div style="flex-shrink:0;">
+                <img src="images/2_cern/cern_main.jpg" class="tr1" style="max-width:600px; max-height:480px; width:auto; height:auto;">
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 3: THE CLAIM -->
+    <div class="slide" data-slide="3">
+        <h2>WHAT HAPPENED???</h2>
+        <div class="row" style="align-items:center;">
+            <div style="flex-shrink:0;">
+                <img src="images/3_particle/particle_accelorator.gif"
+                     class="b-double tl1"
+                     style="max-width:560px; max-height:440px; width:auto; height:auto;">
+            </div>
+            <div class="col">
+                <p>The Large Hadron Collider fired its first beam on <span class="highlight">September 10, 2008</span>.</p>
+                <p class="center" style="font-size:28px; color:red; margin:16px 0;"><strong>IT RIPPED A HOLE IN SPACETIME!!!</strong></p>
+                <p>We shifted into <span class="highlight">TIMELINE B</span><br><br>Timeline A still exists... but we can't reach it</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 4: TITLE REVEAL -->
+    <div class="slide" data-slide="4">
+        <div style="text-align:center; margin-top:60px;">
+            <p style="font-size:36px; color:yellow; margin-bottom:30px;">Those were the Days of the Old...</p>
+            <p style="font-size:60px; color:red; margin:40px 0; animation:blink 0.8s infinite; text-shadow:4px 4px cyan, 6px 6px yellow;">
+                WELCOME TO<br><br>DAYS OF THE NEW
+            </p>
+            <p style="font-size:26px; color:lime; margin-top:40px;">
+                Timeline B &nbsp;|&nbsp; September 10, 2008 - Present
+            </p>
+        </div>
+    </div>
+
+    <!-- SLIDE 5: THE RIFT -->
+    <div class="slide" data-slide="5">
+        <h2>SEPTEMBER 10, 2008 — 10:28 AM</h2>
+        <div class="date-box">THE MOMENT REALITY FRACTURED</div>
+        <div class="row" style="margin-top:8px;">
+            <div class="col">
+                <p>Scientists at CERN detected:</p>
+                <ul>
+                    <li>Particles in TWO PLACES at once!!!</li>
+                    <li>Electromagnetic pulse (NOT planned)</li>
+                    <li>Quantum foam became VISIBLE</li>
+                    <li>Scientists felt "shimmer" in vision</li>
+                    <li>Overwhelming déjà vu</li>
+                </ul>
+                <p style="font-size:22px; color:red; margin-top:10px;">In 0.000003 seconds... everything changed</p>
+            </div>
+            <div style="flex-shrink:0;">
+                <img src="images/5_control%20room/gettyimages-171023639-1024x1024.jpg"
+                     class="tr1"
+                     style="max-width:500px; max-height:450px; width:auto; height:auto;">
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 6: FINANCIAL CRISIS -->
+    <div class="slide" data-slide="6">
+        <h2>5 DAYS LATER...</h2>
+        <div class="date-box">SEPTEMBER 15, 2008</div>
+        <p style="font-size:22px; margin:6px 0;">Lehman Brothers <strong>COLLAPSED</strong></p>
+        <div class="photo-row" style="justify-content:center; margin:8px 0;">
+            <img src="images/6_collapse/VDPZ6KVO2JNO5MCEJNXCQZJPL4.jpg"
+                 class="tl2"
+                 style="height:310px; width:auto;">
+            <img src="images/6_collapse/stressed-stock-exchange-trader-can-t-apprehend-sudden-stock-market-collapse-financial-crisis-concept-stock-broker-364343951.webp"
+                 class="tr2"
+                 style="height:310px; width:auto;">
+        </div>
+        <p>They blame "subprime mortgages"... But the REAL reason: <span class="highlight">Timeline shift caused quantum changes in human decision-making</span></p>
+        <p style="font-size:20px; color:cyan;">The 2008 financial crisis = Reality destabilizing!!!</p>
+    </div>
+
+    <!-- SLIDE 7: SEPTEMBER 19 -->
+    <div class="slide" data-slide="7">
+        <h2>SEPTEMBER 19, 2008</h2>
+        <marquee>*** REALITY FIGHTS BACK *** REALITY FIGHTS BACK *** REALITY FIGHTS BACK ***</marquee>
+        <div class="row" style="margin-top:10px; align-items:center;">
+            <div class="col">
+                <p>The LHC "malfunctioned" - needed <span class="highlight">14 MONTHS</span> of repairs</p>
+                <p>Official story: "electrical fault"<br><br>
+                    <span class="warning">REAL STORY:</span> The rift tried to heal itself!!! Universe fighting back!!!
+                </p>
+                <p>14 months = studying the rift, learning to stabilize it</p>
+            </div>
+            <div style="flex-shrink:0;">
+                <img src="images/7_damage/tpzc1m2kn2v51.jpg"
+                     class="tl1"
+                     style="max-width:540px; max-height:430px; width:auto; height:auto;">
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 8: COVER-UP -->
+    <div class="slide" data-slide="8">
+        <h2>THE COVER-UP</h2>
+        <div class="row" style="align-items:flex-start;">
+            <div class="col">
+                <h3>Phase 1: Scientists (2008–2009)</h3>
+                <p>Select physicists brought in under NDAs. Others were SILENCED.</p>
+                <h3>Phase 2: Governments (2009–2010)</h3>
+                <p>Intelligence agencies got involved. Agreement: exploit the knowledge but KEEP IT QUIET</p>
+                <h3>Phase 3: Hollywood (2010–2012)</h3>
+                <p style="font-size:22px; color:yellow;">If you can't hide the truth... NORMALIZE IT</p>
+            </div>
+            <div style="flex-shrink:0;">
+                <img src="images/8_cover%20up/gettyimages-185124853-612x612.jpg"
+                     class="tr1 b-ridge"
+                     style="max-width:450px; max-height:450px; width:auto; height:auto;">
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 9: HOLLYWOOD -->
+    <div class="slide" data-slide="9">
+        <h2>THEY TOLD US IN THE MOVIES!!!</h2>
+        <div class="row" style="margin-top:8px;">
+            <div class="col" style="align-items:center; text-align:center;">
+                <h3>Inception (2010)</h3>
+                <img src="images/9_movies/inception.webp"
+                     class="tr1"
+                     style="max-height:360px; max-width:100%; width:auto;">
+                <p style="margin-top:10px; text-align:left;">Christopher Nolan was given REAL quantum mechanics data. Movie about layered realities released RIGHT AFTER the shift to make us think it's "just fiction"</p>
+            </div>
+            <div class="col" style="align-items:center; text-align:center;">
+                <h3>Source Code (2011)</h3>
+                <img src="images/9_movies/source%20code.webp"
+                     class="tl2"
+                     style="max-height:360px; max-width:100%; width:auto;">
+                <p style="margin-top:10px; text-align:left;">Literally about jumping between TIMELINES. Coincidence??? I THINK NOT!!!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 10: MANDELA EFFECT -->
+    <div class="slide" data-slide="10">
+        <h2>THE MANDELA EFFECT = TIMELINE A MEMORIES</h2>
+        <div class="row" style="align-items:center;">
+            <div style="flex-shrink:0;">
+                <img src="images/10_mandela/MV5BNWVmODk1NjQtNTIzYS00MDczLWI0MDAtZjkzYzdmY2YyY2M4XkEyXkFqcGc@._V1_.jpg"
+                     class="tl1"
+                     style="max-width:480px; max-height:450px; width:auto; height:auto;">
+            </div>
+            <div class="col">
+                <p style="font-size:22px;">Millions of people remember things DIFFERENTLY...<br>Because we're remembering <span class="highlight">THE ORIGINAL TIMELINE</span>!!!</p>
+                <p style="color:cyan; margin-top:14px;">These "false memories" exploded online after 2010<br>WHY??? Because we shifted timelines in 2008!!!</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 11: MANDELA EXAMPLES -->
+    <div class="slide" data-slide="11">
+        <h2>PROOF FROM TIMELINE A</h2>
+        <div class="row" style="align-items:flex-start;">
+            <div class="col" style="flex:0 0 auto; max-width:240px;">
+                <ul style="font-size:16px; margin-bottom:8px;">
+                    <li><span class="highlight">Berenstein Bears</span> → "Berenstain"</li>
+                    <li><span class="highlight">Fruit of Loom cornucopia</span> → gone???</li>
+                    <li><span class="highlight">Monopoly Man monocle</span> → never???</li>
+                    <li><span class="highlight">Curious George's tail</span> → disappeared???</li>
+                    <li><span class="highlight">Looney Toons</span> → "Looney Tunes"</li>
+                    <li><span class="highlight">Jiffy peanut butter</span> → just "Jif"</li>
+                </ul>
+                <p style="font-size:17px; color:yellow;">WE'RE NOT CRAZY — WE REMEMBER TIMELINE A!!!</p>
+            </div>
+            <div>
+                <table class="m-grid">
+                    <tr>
+                        <td>
+                            <img src="images/11_mandela_examples/berenstein_bears.avif" class="b-dashed tl2" style="width:210px; height:auto;">
+                            <div class="m-cap">BERENSTEIN???</div>
+                        </td>
+                        <td style="padding-top:22px;">
+                            <img src="images/11_mandela_examples/fruit_of_the_loom.avif" class="b-outset tr3" style="width:190px; height:auto;">
+                            <div class="m-cap">WHERE'S THE CORNUCOPIA</div>
+                        </td>
+                        <td style="padding-top:10px;">
+                            <img src="images/11_mandela_examples/monopoly.avif" class="tl1" style="width:200px; height:auto;">
+                            <div class="m-cap">NO MONOCLE???</div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="padding-top:16px;">
+                            <img src="images/11_mandela_examples/curious_george.avif" class="tr2" style="width:198px; height:auto;">
+                            <div class="m-cap">NO TAIL!!!</div>
+                        </td>
+                        <td style="padding-top:10px; padding-left:22px;">
+                            <img src="images/11_mandela_examples/looney_tunes.avif" class="b-double tl2" style="width:218px; height:auto;">
+                            <div class="m-cap">TOONS or TUNES???</div>
+                        </td>
+                        <td style="padding-top:24px;">
+                            <img src="images/11_mandela_examples/jiffy.avif" class="tr1" style="width:185px; height:auto;">
+                            <div class="m-cap">JIFFY. WE KNOW.</div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 12: TECHNOLOGY -->
+    <div class="slide" data-slide="12">
+        <h2>TECHNOLOGY EXPLODED AFTER 2008</h2>
+        <p style="margin:2px 0 8px; font-size:22px;">Coincidence??? NO WAY!!!</p>
+        <div class="row">
+            <div class="col" style="align-items:center;">
+                <h3>iPhone App Store (Sept 2008)</h3>
+                <img src="images/12_technology/appstore.webp"
+                     class="tr1"
+                     style="max-height:330px; max-width:100%; width:auto;">
+                <p style="margin-top:10px;">Smartphones took over EVERYTHING overnight</p>
+            </div>
+            <div class="col" style="align-items:center;">
+                <h3>Bitcoin (Jan 2009)</h3>
+                <img src="images/12_technology/bitcoin.jpg"
+                     class="tl2"
+                     style="max-height:330px; max-width:100%; width:auto;">
+                <p style="margin-top:10px;">Mysterious "Satoshi Nakamoto" creates digital currency 4 months after the rift. WHO IS SATOSHI??? Why did they disappear???</p>
+            </div>
+        </div>
+        <p style="margin-top:6px; font-size:17px;">Blockbuster dies (2010) — Physical reality FADING AWAY. Timeline A dying.</p>
+    </div>
+
+    <!-- SLIDE 13: GLITCHES -->
+    <div class="slide" data-slide="13">
+        <h2>GLITCH MOMENTS = SEEING BOTH TIMELINES</h2>
+        <div class="row" style="align-items:flex-start; margin-top:8px;">
+            <div class="col" style="align-items:flex-start;">
+                <h3>Double Rainbow Guy (2010)</h3>
+                <div class="yt-wrap">
+                    <iframe width="580" height="326"
+                            src="https://www.youtube.com/embed/OQSNhk5ICTI"
+                            title="Double Rainbow"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen></iframe>
+                </div>
+                <p style="margin-top:10px;">"What does it mean???" — He was seeing BOTH TIMELINES OVERLAPPING!!!</p>
+            </div>
+            <div class="col" style="align-items:flex-start;">
+                <h3>The Dress (2015)</h3>
+                <img src="images/13_glitch/dress.webp"
+                     class="tr2"
+                     style="max-height:340px; width:auto;">
+                <p style="color:red; margin-top:10px;">
+                    People couldn't agree on OBJECTIVE REALITY<br>
+                    Because they were seeing it from DIFFERENT TIMELINES!!!
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 14: THE TRAP -->
+    <div class="slide" data-slide="14">
+        <h2>THE TECHNOLOGY TRAP!!!</h2>
+        <marquee bgcolor="red" style="color:yellow; padding:3px;">*** CRITICAL DISCOVERY *** CRITICAL DISCOVERY ***</marquee>
+        <p style="font-size:26px; margin:8px 0; text-align:center; color:cyan;"><strong>WE ARE HOLDING THE RIFT OPEN WITH OUR PHONES!!!</strong></p>
+        <div class="photo-row" style="justify-content:center; margin:10px 0;">
+            <img src="images/14_addiciton/technology-addiction-tired-man-wires-600nw-2626224857.webp"
+                 class="tl1"
+                 style="height:280px; width:auto;">
+            <img src="images/14_addiciton/1520242036422.jpg"
+                 class="tr2"
+                 style="height:280px; width:auto;">
+        </div>
+        <p>Every phone, every device, every WiFi signal = quantum resonance that STABILIZES TIMELINE B</p>
+        <p style="color:yellow;">Timeline A is trying to heal... but we're preventing it!!!</p>
+    </div>
+
+    <!-- SLIDE 15: WHY -->
+    <div class="slide" data-slide="15">
+        <h2>WHY THEY WANT TIMELINE B</h2>
+        <div class="row" style="align-items:flex-start;">
+            <div class="photo-row" style="flex-shrink:0; flex-direction:column; gap:0;">
+                <img src="images/15_surveillance/gettyimages-1311084124-612x612.jpg"
+                     class="tl2"
+                     style="height:250px; width:auto; margin-bottom:12px;">
+                <img src="images/15_surveillance/MOT16-03.gif"
+                     class="tr1"
+                     style="height:215px; width:auto;">
+            </div>
+            <div class="col">
+                <p style="font-size:22px;">Timeline B is <strong>MORE CONTROLLABLE</strong></p>
+                <ul>
+                    <li>Everyone tracked 24/7</li>
+                    <li>Every transaction recorded</li>
+                    <li>No privacy</li>
+                    <li>No escape</li>
+                    <li>Total surveillance</li>
+                </ul>
+                <p style="font-size:21px; color:red; margin-top:10px;">They made it convenient... then ESSENTIAL... then IMPOSSIBLE to resist</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 16: THE WAY BACK -->
+    <div class="slide" data-slide="16">
+        <h2>WE CAN STILL GO BACK!!!</h2>
+        <p style="font-size:24px; color:lime; text-align:center; margin:4px 0 10px;"><strong>IT'S NOT TOO LATE</strong></p>
+        <div class="row" style="align-items:flex-start;">
+            <div class="photo-row" style="flex-shrink:0; flex-direction:column; gap:0;">
+                <img src="images/16_unplug/disconnect-human-hand-unplugged-jack-unplug-concept-pict-getting-free-technologies-modern-life-links-88647245.webp"
+                     class="tl1"
+                     style="height:220px; width:auto; margin-bottom:12px;">
+                <img src="images/16_unplug/farmers-03-abc-jef-240222_1708620157650_hpMain_16x9.avif"
+                     class="tr2"
+                     style="height:220px; width:auto;">
+            </div>
+            <div class="col">
+                <h3>What it takes:</h3>
+                <p style="font-size:23px; color:yellow;"><strong>GLOBAL DIGITAL BLACKOUT<br>24–48 hours<br>Everyone, everywhere, at once</strong></p>
+                <ul>
+                    <li>No phones</li>
+                    <li>No internet</li>
+                    <li>No GPS / No WiFi</li>
+                    <li><strong>JUST STOP</strong></li>
+                </ul>
+                <p>The quantum resonance would collapse. Timeline A could bleed back through.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 17: THE CHOICE -->
+    <div class="slide" data-slide="17">
+        <h2>THE CHOICE IS OURS</h2>
+        <div class="row" style="align-items:center; margin-top:10px;">
+            <div class="col" style="text-align:center;">
+                <p style="font-size:24px; margin:0 0 20px; line-height:1.9;">
+                    They want us to think it's too late<br>
+                    That we're too addicted<br>
+                    That it's impossible
+                </p>
+                <p style="font-size:30px; color:cyan;">
+                    BUT WHAT IF THAT'S WHAT THEY WANT US TO BELIEVE???
+                </p>
+                <p style="font-size:20px; margin-top:20px;">
+                    The math works. The physics is sound. The window is still open (barely).
+                </p>
+            </div>
+            <div style="flex-shrink:0; display:flex; flex-direction:column; gap:14px; align-items:center;">
+                <img src="images/17_matrix/pills.webp" class="tr2 b-dashed" style="max-height:200px; width:auto;">
+                <img src="images/17_matrix/matrix_code.gif" class="tl1" style="max-height:220px; width:auto;">
+            </div>
+        </div>
+    </div>
+
+    <!-- SLIDE 18: FINAL -->
+    <div class="slide" data-slide="18">
+        <h2>DO YOU WANT TO GO HOME?</h2>
+        <div class="row" style="align-items:center; margin-top:10px;">
+            <div class="col" style="text-align:center;">
+                <p style="font-size:25px; margin:0 0 20px; line-height:1.9;">
+                    September 10, 2008 — Reality fractured<br>
+                    We shifted into Timeline B<br>
+                    Technology holds the rift open<br>
+                    We could go back<br>
+                    <span style="font-size:34px; color:yellow;"><strong>IF WE ALL CHOOSE TO</strong></span>
+                </p>
+                <p style="font-size:36px; color:red; animation:blink 0.8s infinite;">THE TRUTH IS OUT THERE</p>
+                <p style="margin-top:30px; font-size:14px; opacity:0.6;">[Press ESC to restart]</p>
+            </div>
+            <div style="flex-shrink:0;">
+                <img src="images/18_universe/1_Nvaa89TY54gEOHKTN0SXkA.gif" class="tl2 b-double" style="max-height:400px; max-width:480px; width:auto; height:auto;">
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <div class="nav">
+        <button class="nav-btn" id="prevBtn" onclick="changeSlide(-1)">◄ BACK</button>
+        <div class="slide-counter">SLIDE <span id="currentSlide">1</span> of <span id="totalSlides">18</span></div>
+        <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">NEXT ►</button>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <div>👁 VISITORS: 000451337 👁 &nbsp;|&nbsp; Last Updated: Sept 10, 2008 &nbsp;|&nbsp; <span style="font-size:10px;">Best viewed in Internet Explorer 6.0</span></div>
+    </div>
+</div>
+
+<script>
+    const canvas = document.getElementById('starfield');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const stars = [];
+    for (let i = 0; i < 100; i++) {
+        stars.push({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            radius: Math.random() * 2,
+            speed: Math.random() * 0.5 + 0.1
+        });
+    }
+
+    function drawStars() {
+        ctx.fillStyle = 'black';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        stars.forEach(star => {
+            ctx.beginPath();
+            ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+            ctx.fillStyle = 'lime';
+            ctx.fill();
+            star.y += star.speed;
+            if (star.y > canvas.height) { star.y = 0; star.x = Math.random() * canvas.width; }
+        });
+        requestAnimationFrame(drawStars);
+    }
+    drawStars();
+
+    const totalSlides = document.querySelectorAll('.slide').length;
+    let currentSlideNum = parseInt(sessionStorage.getItem('currentSlide')) || 1;
+    document.getElementById('totalSlides').textContent = totalSlides;
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        if (n > totalSlides) currentSlideNum = totalSlides;
+        if (n < 1) currentSlideNum = 1;
+        slides.forEach(s => s.classList.remove('active'));
+        slides[currentSlideNum - 1].classList.add('active');
+        document.getElementById('currentSlide').textContent = currentSlideNum;
+        sessionStorage.setItem('currentSlide', currentSlideNum);
+        document.getElementById('prevBtn').disabled = currentSlideNum === 1;
+        document.getElementById('nextBtn').disabled = currentSlideNum === totalSlides;
+        slides[currentSlideNum - 1].scrollTop = 0;
+    }
+
+    function changeSlide(n) { currentSlideNum += n; showSlide(currentSlideNum); }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowLeft') changeSlide(-1);
+        if (e.key === 'ArrowRight') changeSlide(1);
+        if (e.key === 'Escape') { currentSlideNum = 1; sessionStorage.removeItem('currentSlide'); showSlide(1); }
+    });
+
+    window.addEventListener('resize', () => { canvas.width = window.innerWidth; canvas.height = window.innerHeight; });
+
+    showSlide(currentSlideNum);
+</script>
+</body>
+</html>
