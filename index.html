@@ -697,58 +697,93 @@
         "Do you want to go home? September tenth, two thousand and eight. Reality fractured. We shifted into Timeline B. Technology holds the rift open. We could go back... if we all choose to. The truth... is out there."
     ];
 
+    // ── ElevenLabs TTS ──────────────────────────────────────────────
     let ttsEnabled = false;
-    let ttsVoice = null;
+    let elVoiceId  = 'TX3LPaxmHKxFdv7VOQHJ'; // "Liam" – calm, authoritative default
+    let elApiKey   = localStorage.getItem('elKey') || '';
+    let audioCache = {};   // slide# → blob URL
+    let currentAudio = null;
 
-    function loadVoices() {
-        const voices = window.speechSynthesis.getVoices();
-        if (!voices.length) return;
-        const sel = document.getElementById('voiceSelect');
-        const prev = sel.value;
-        sel.innerHTML = '<option value="">-- voice --</option>';
-        const enVoices = voices.filter(v => v.lang && v.lang.startsWith('en'));
-        (enVoices.length ? enVoices : voices).forEach((v, i) => {
-            const opt = document.createElement('option');
-            opt.value = v.name;
-            opt.textContent = v.name;
-            sel.appendChild(opt);
-        });
-        // Pick default voice
-        if (!ttsVoice) {
-            const preferred = ['Daniel', 'Google UK English Male', 'Alex', 'Microsoft David', 'Fred'];
-            for (const name of preferred) {
-                const v = voices.find(v => v.name.includes(name));
-                if (v) { ttsVoice = v; break; }
-            }
-            if (!ttsVoice) ttsVoice = (enVoices[0] || voices[0] || null);
-        }
-        if (ttsVoice) sel.value = ttsVoice.name;
-        else if (prev) sel.value = prev;
+    function getApiKey() {
+        if (elApiKey) return elApiKey;
+        const k = prompt('Enter your ElevenLabs API key (stored locally, never sent to GitHub):');
+        if (k) { elApiKey = k.trim(); localStorage.setItem('elKey', elApiKey); }
+        return elApiKey;
     }
 
-    function setVoice(name) {
-        const voices = window.speechSynthesis.getVoices();
-        ttsVoice = voices.find(v => v.name === name) || ttsVoice;
+    async function loadElVoices() {
+        const key = elApiKey || localStorage.getItem('elKey');
+        if (!key) return;
+        try {
+            const res = await fetch('https://api.elevenlabs.io/v1/voices', {
+                headers: { 'xi-api-key': key }
+            });
+            const data = await res.json();
+            const sel = document.getElementById('voiceSelect');
+            sel.innerHTML = '';
+            (data.voices || []).sort((a,b) => a.name.localeCompare(b.name)).forEach(v => {
+                const opt = document.createElement('option');
+                opt.value = v.voice_id;
+                opt.textContent = v.name;
+                if (v.voice_id === elVoiceId) opt.selected = true;
+                sel.appendChild(opt);
+            });
+        } catch(e) { console.warn('Could not load EL voices', e); }
+    }
+
+    function setVoice(id) {
+        elVoiceId = id;
+        audioCache = {};  // clear cache when voice changes
         if (ttsEnabled) speakSlide(currentSlideNum);
     }
 
-    window.speechSynthesis.onvoiceschanged = loadVoices;
-    loadVoices();
-
-    function speakSlide(n) {
+    async function speakSlide(n) {
         if (!ttsEnabled) return;
-        window.speechSynthesis.cancel();
+        if (currentAudio) { currentAudio.pause(); currentAudio = null; }
+
         const text = narration[n - 1];
         if (!text) return;
-        if (!ttsVoice) loadVoices();
-        const msg = new SpeechSynthesisUtterance(text);
-        if (ttsVoice) msg.voice = ttsVoice;
-        msg.rate   = 0.8;
-        msg.pitch  = 0.55;
-        msg.volume = 1;
-        // Chrome bug: synthesizer can get stuck paused — resume before speaking
-        window.speechSynthesis.resume();
-        window.speechSynthesis.speak(msg);
+
+        const key = getApiKey();
+        if (!key) return;
+
+        const btn = document.getElementById('ttsBtn');
+        const cacheKey = `${elVoiceId}:${n}`;
+
+        // Use cached blob if available
+        if (audioCache[cacheKey]) {
+            currentAudio = new Audio(audioCache[cacheKey]);
+            currentAudio.play();
+            return;
+        }
+
+        btn.textContent = '⏳ LOADING...';
+        try {
+            const res = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${elVoiceId}`, {
+                method: 'POST',
+                headers: {
+                    'xi-api-key': key,
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    text,
+                    model_id: 'eleven_turbo_v2_5',
+                    voice_settings: { stability: 0.35, similarity_boost: 0.80, style: 0.45, use_speaker_boost: true }
+                })
+            });
+            if (!res.ok) { console.error('EL error', res.status); btn.textContent = '🔇 MUTE'; return; }
+            const blob = await res.blob();
+            const url  = URL.createObjectURL(blob);
+            audioCache[cacheKey] = url;
+            if (ttsEnabled) {
+                btn.textContent = '🔇 MUTE';
+                currentAudio = new Audio(url);
+                currentAudio.play();
+            }
+        } catch(e) {
+            console.error('ElevenLabs fetch failed', e);
+            btn.textContent = '🔇 MUTE';
+        }
     }
 
     function toggleTTS() {
@@ -756,12 +791,18 @@
         const btn = document.getElementById('ttsBtn');
         if (ttsEnabled) {
             btn.textContent = '🔇 MUTE';
+            if (!elApiKey) elApiKey = localStorage.getItem('elKey') || '';
+            if (!elApiKey) getApiKey();
+            loadElVoices();
             speakSlide(currentSlideNum);
         } else {
             btn.textContent = '🔊 NARRATE';
-            window.speechSynthesis.cancel();
+            if (currentAudio) { currentAudio.pause(); currentAudio = null; }
         }
     }
+
+    // Pre-load voices list if key already saved
+    if (elApiKey) loadElVoices();
 
     showSlide(currentSlideNum);
 </script>
