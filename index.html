@@ -587,6 +587,7 @@
         <div style="display:flex; align-items:center; gap:14px;">
             <div class="slide-counter">SLIDE <span id="currentSlide">1</span> of <span id="totalSlides">18</span></div>
             <button class="nav-btn" id="ttsBtn" onclick="toggleTTS()" title="Toggle narration">🔊 NARRATE</button>
+            <select id="voiceSelect" onchange="setVoice(this.value)" title="Choose voice" style="font-family:'Comic Sans MS',cursive; background:black; color:lime; border:2px outset lime; padding:3px 6px; font-size:13px; cursor:pointer;"><option value="">-- voice --</option></select>
         </div>
         <button class="nav-btn" id="nextBtn" onclick="changeSlide(1)">NEXT ►</button>
     </div>
@@ -701,12 +702,34 @@
 
     function loadVoices() {
         const voices = window.speechSynthesis.getVoices();
-        const preferred = ['Daniel', 'Google UK English Male', 'Alex', 'Microsoft David', 'Fred'];
-        for (const name of preferred) {
-            const v = voices.find(v => v.name.includes(name));
-            if (v) { ttsVoice = v; break; }
+        if (!voices.length) return;
+        const sel = document.getElementById('voiceSelect');
+        const prev = sel.value;
+        sel.innerHTML = '<option value="">-- voice --</option>';
+        const enVoices = voices.filter(v => v.lang && v.lang.startsWith('en'));
+        (enVoices.length ? enVoices : voices).forEach((v, i) => {
+            const opt = document.createElement('option');
+            opt.value = v.name;
+            opt.textContent = v.name;
+            sel.appendChild(opt);
+        });
+        // Pick default voice
+        if (!ttsVoice) {
+            const preferred = ['Daniel', 'Google UK English Male', 'Alex', 'Microsoft David', 'Fred'];
+            for (const name of preferred) {
+                const v = voices.find(v => v.name.includes(name));
+                if (v) { ttsVoice = v; break; }
+            }
+            if (!ttsVoice) ttsVoice = (enVoices[0] || voices[0] || null);
         }
-        if (!ttsVoice) ttsVoice = voices.find(v => v.lang && v.lang.startsWith('en')) || voices[0] || null;
+        if (ttsVoice) sel.value = ttsVoice.name;
+        else if (prev) sel.value = prev;
+    }
+
+    function setVoice(name) {
+        const voices = window.speechSynthesis.getVoices();
+        ttsVoice = voices.find(v => v.name === name) || ttsVoice;
+        if (ttsEnabled) speakSlide(currentSlideNum);
     }
 
     window.speechSynthesis.onvoiceschanged = loadVoices;
